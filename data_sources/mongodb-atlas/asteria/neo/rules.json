@@ -1,0 +1,15 @@
+{
+    "collection": "neo",
+    "database": "asteria",
+    "roles": [
+        {
+            "name": "default",
+            "apply_when": {},
+            "read": true,
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {}
+        }
+    ]
+}
