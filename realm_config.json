@@ -1,0 +1,7 @@
+{
+    "app_id": "asteria-gccgo",
+    "config_version": 20210101,
+    "name": "asteria",
+    "location": "IE",
+    "deployment_model": "GLOBAL"
+}

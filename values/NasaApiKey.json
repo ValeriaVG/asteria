@@ -1,0 +1,5 @@
+{
+    "name": "NasaApiKey",
+    "value": "NasaApiKey",
+    "from_secret": true
+}
