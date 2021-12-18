@@ -1,10 +1,10 @@
 [
     {
-        "name": "getNEOToday",
-        "private": false
-    },
-    {
         "name": "fetchNEOFeed",
         "private": true
+    },
+    {
+        "name": "getNEOToday",
+        "private": false
     }
 ]

@@ -1,1 +1,129 @@
-{}
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "absolute_magnitude_h": {
+            "bsonType": "double"
+        },
+        "close_approach_data": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "object",
+                "properties": {
+                    "close_approach_date": {
+                        "bsonType": "string"
+                    },
+                    "close_approach_date_full": {
+                        "bsonType": "string"
+                    },
+                    "epoch_date_close_approach": {
+                        "bsonType": "long"
+                    },
+                    "miss_distance": {
+                        "bsonType": "object",
+                        "properties": {
+                            "astronomical": {
+                                "bsonType": "string"
+                            },
+                            "kilometers": {
+                                "bsonType": "string"
+                            },
+                            "lunar": {
+                                "bsonType": "string"
+                            },
+                            "miles": {
+                                "bsonType": "string"
+                            }
+                        }
+                    },
+                    "orbiting_body": {
+                        "bsonType": "string"
+                    },
+                    "relative_velocity": {
+                        "bsonType": "object",
+                        "properties": {
+                            "kilometers_per_hour": {
+                                "bsonType": "string"
+                            },
+                            "kilometers_per_second": {
+                                "bsonType": "string"
+                            },
+                            "miles_per_hour": {
+                                "bsonType": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "estimated_diameter": {
+            "bsonType": "object",
+            "properties": {
+                "feet": {
+                    "bsonType": "object",
+                    "properties": {
+                        "estimated_diameter_max": {
+                            "bsonType": "double"
+                        },
+                        "estimated_diameter_min": {
+                            "bsonType": "double"
+                        }
+                    }
+                },
+                "kilometers": {
+                    "bsonType": "object",
+                    "properties": {
+                        "estimated_diameter_max": {
+                            "bsonType": "double"
+                        },
+                        "estimated_diameter_min": {
+                            "bsonType": "double"
+                        }
+                    }
+                },
+                "meters": {
+                    "bsonType": "object",
+                    "properties": {
+                        "estimated_diameter_max": {
+                            "bsonType": "double"
+                        },
+                        "estimated_diameter_min": {
+                            "bsonType": "double"
+                        }
+                    }
+                },
+                "miles": {
+                    "bsonType": "object",
+                    "properties": {
+                        "estimated_diameter_max": {
+                            "bsonType": "double"
+                        },
+                        "estimated_diameter_min": {
+                            "bsonType": "double"
+                        }
+                    }
+                }
+            }
+        },
+        "id": {
+            "bsonType": "string"
+        },
+        "is_potentially_hazardous_asteroid": {
+            "bsonType": "bool"
+        },
+        "is_sentry_object": {
+            "bsonType": "bool"
+        },
+        "name": {
+            "bsonType": "string"
+        },
+        "nasa_jpl_url": {
+            "bsonType": "string"
+        },
+        "neo_reference_id": {
+            "bsonType": "string"
+        }
+    },
+    "title": "neo"
+}
