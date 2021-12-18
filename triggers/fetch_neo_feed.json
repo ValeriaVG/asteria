@@ -1,5 +1,4 @@
 {
-    "id": "61b9b07068981b2077a6e83c",
     "name": "fetch_neo_feed",
     "type": "SCHEDULED",
     "config": {

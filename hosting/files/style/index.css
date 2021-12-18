@@ -1,0 +1,83 @@
+body,html{
+    margin:0;
+    padding:0;
+    background-color: #000000;
+    color:#ffffff;
+    font-size:16px;
+    line-height: 1.2;
+    font-family: sans-serif;
+}
+body,main{
+    display:flex;
+    flex-direction:column;
+}
+a{
+    color:white;
+}
+.hero{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    z-index:1;
+}
+.hero img {
+    position: absolute;
+    bottom:0;
+    left:50%;
+    transform: translateX(-50%) translateY(50%); 
+}
+main {
+    z-index:2;
+    position:relative;
+    margin:0 auto;
+    min-height: 512px;
+    background:rgba(0,0,0,0.8);
+    border-top:1px solid rgba(255,255,255,1);
+    padding:0 1rem 2rem;
+}
+main h1 {
+    text-align: center;
+}
+
+main table td,main table th{
+    padding:0.5rem 1rem;
+}
+main table thead tr{
+    background:white;
+    color:black;
+}
+table tr.info{
+    text-align:center;
+}
+footer{
+    margin:0 auto;
+    font-size:0.8rem;
+    color:rgba(255,255,255,0.5);
+    padding:0.5rem 1rem;
+}
+/* https://loading.io/css/ */
+.spinner {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    text-indent: -200vw;
+}
+.spinner:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: spinner 1.2s linear infinite;
+  }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
