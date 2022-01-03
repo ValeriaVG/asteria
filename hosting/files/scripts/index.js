@@ -22,7 +22,7 @@ const { data, errors } = await exec(`query($from: Long, $to: Long) {
   }
 }`, { from: Date.now().toString(), to: (new Date(Date.now() + 24 * 60 * 60 * 1_000).setHours(0, 0, 0, 0)).toString() })
 
-const EARTH_DIAMETER_KM = 152100000
+const KARMAN_LINE_KM = 100
 
 const list = document.getElementById('list')
 const loader = document.getElementById('loader')
@@ -30,13 +30,13 @@ loader.hidden = true
 let isOk = true
 for (const entry of data.neos) {
   const row = document.createElement('li')
-  const isRowOk = !entry.is_potentially_hazardous_asteroid && entry.miss_distance.kilometers < EARTH_DIAMETER_KM
+  const isRowOk = !entry.is_potentially_hazardous_asteroid && entry.miss_distance.kilometers > KARMAN_LINE_KM
   if (!isRowOk) row.className = 'danger'
   row.innerHTML =
     `<a href="${entry.url}" target="_blank" rel="noopener">${entry.is_sentry_object ? 'Sentry' : 'Asteroid'} ${entry.name}</a> ` +
     `approaches Earth today at <time>${new Date(Number(entry.epoch_date_close_approach)).toLocaleTimeString()}</time> ` +
     `at <em>${formatNumber(entry.relative_velocity.kilometers_per_hour)}</em> km/h ` +
-    `and will miss by <em class="distance">${formatNumber(entry.miss_distance.kilometers)}</em> km.`
+    (isRowOk ? `and will miss by <em class="distance">${formatNumber(entry.miss_distance.kilometers)}</em> km.` : `and will enter Earth's atmosphere 😱`)
   list.appendChild(row)
   isOk = isOk && isRowOk
 }
