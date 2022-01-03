@@ -2,9 +2,5 @@
     {
         "name": "fetchNEOFeed",
         "private": true
-    },
-    {
-        "name": "getNEOToday",
-        "private": false
     }
 ]

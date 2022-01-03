@@ -22,7 +22,7 @@
  * }} item from NASA NEO API
  * 
  * @returns {{
- *  id: string
+ *  id: string,
  *  name: string,
  *  url: string
  *  absolute_magnitude_h: number,
@@ -81,6 +81,7 @@ exports = async function () {
     }))
 
     await neoCollection.bulkWrite(ops, { ordered: false });
+   
   } catch (error) {
     console.error("Failed to insert data", error)
   }
