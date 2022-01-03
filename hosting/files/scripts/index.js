@@ -2,35 +2,44 @@ import { initApi } from "./api.js"
 import { formatNumber } from './fmt.js'
 
 const exec = await initApi()
-const { data, errors } = await exec(`query($date: String) {
-    neos(query:{close_approach_data:{close_approach_date:$date}}) {
-          is_potentially_hazardous_asteroid
-          is_sentry_object
-          name
-          nasa_jpl_url
-      close_approach_data{
-        close_approach_date_full,
-        miss_distance{
-          kilometers
-        }
-        relative_velocity{
-          kilometers_per_hour
-        }
-      }
+const { data, errors } = await exec(`query($from: Long, $to: Long) {
+  neos(sortBy: EPOCH_DATE_CLOSE_APPROACH_ASC, query: {epoch_date_close_approach_gt: $from,epoch_date_close_approach_lt: $to} ) {
+    _id
+		absolute_magnitude_h
+		epoch_date_close_approach
+		id
+		is_potentially_hazardous_asteroid
+		is_sentry_object
+		name
+		orbiting_body
+		url
+    relative_velocity {
+      kilometers_per_hour
     }
-  }`, { date: new Date().toISOString().split('T')[0] })
-console.log(errors, data)
+    miss_distance {
+      kilometers
+    }
+  }
+}`, { from: Date.now().toString(), to: (new Date(Date.now() + 24 * 60 * 60 * 1_000).setHours(0, 0, 0, 0)).toString() })
 
-const table = document.getElementById('neo')
-const tbody = table.querySelector('tbody')
-const loader = document.getElementById('table-loader')
+const EARTH_DIAMETER_KM = 152100000
+
+const list = document.getElementById('list')
+const loader = document.getElementById('loader')
 loader.hidden = true
+let isOk = true
 for (const entry of data.neos) {
-  const row = document.createElement('tr')
+  const row = document.createElement('li')
+  const isRowOk = !entry.is_potentially_hazardous_asteroid && entry.miss_distance.kilometers < EARTH_DIAMETER_KM
+  if (!isRowOk) row.className = 'danger'
   row.innerHTML =
-    `<td><a href="${entry.nasa_jpl_url}">${entry.name}</a></td>` +
-    `<td>${entry.close_approach_data[0].close_approach_date_full}</td>` +
-    `<td>${formatNumber(entry.close_approach_data[0].relative_velocity.kilometers_per_hour)} km/h</td>` +
-    `<td>${formatNumber(entry.close_approach_data[0].miss_distance.kilometers)} km</td>`
-  tbody.appendChild(row)
+    `<a href="${entry.url}" target="_blank" rel="noopener">${entry.is_sentry_object ? 'Sentry' : 'Asteroid'} ${entry.name}</a> ` +
+    `approaches Earth today at <time>${new Date(Number(entry.epoch_date_close_approach)).toLocaleTimeString()}</time> ` +
+    `at <em>${formatNumber(entry.relative_velocity.kilometers_per_hour)}</em> km/h ` +
+    `and will miss by <em class="distance">${formatNumber(entry.miss_distance.kilometers)}</em> km.`
+  list.appendChild(row)
+  isOk = isOk && isRowOk
 }
+const status = document.getElementById('status')
+status.className = isOk ? 'good' : 'bad'
+status.innerHTML = isOk ? 'No collissions detected today' : 'Collision detected! We are doomed!'

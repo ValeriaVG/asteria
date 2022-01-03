@@ -9,18 +9,12 @@
 </head>
 <body>
     <header>
-        <div>Everything is fine</div>
+        <h1 id="status"> Asteroids approaching Earth today </h1>
     </header>
     <main class="neo">
-        
-        <table id="neo">
-            <thead>
-                <tr><th>Name</th><th>Approach Date</th><th>Velocity</th><th>Miss Distance</th></tr>
-            </thead>
-            <tbody>
-                <tr id="table-loader" class="info"><td colspan="4"><span class="spinner">Loading...</span></td></tr>
-            </tbody>
-        </table>
+        <ul id="list">
+          <li id="loader"><span class="spinner">Loading...</span></li>
+        </ul>
     </main>
     <footer>
         Developed by <a href="https://github.com/ValeriaVG" target="_blank" rel="noopener">ValeriaVG</a> using data provided by <a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA API</a> powered by <a href="https://docs.atlas.mongodb.com/" target="_blank" rel="noopener">MongoDB Atlas</a>

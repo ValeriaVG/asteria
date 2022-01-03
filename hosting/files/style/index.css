@@ -2,10 +2,58 @@
 body,html{
     margin:0;
     padding:0;
-    background-color: #000000;
-    color:#ffffff;
-    font-size:16px;
-    line-height: 1.2;
+    background-color: black;
+    color:white;
+    font-size:18px;
+    line-height:1.5;
     font-family: 'VT323', monospace;
 }
 a {color:white}
+body{
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+main {
+    max-width: 540px;
+    width:100%;
+}
+footer, header{
+    margin-top:auto;
+}
+footer{
+    font-size:14px;
+    color: rgba(255,255,255,0.5);
+    padding:0.5rem 1rem;
+}
+#list{
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    overflow: auto;
+}
+#loader {
+    text-align:center;
+}
+
+#status {
+    padding: 2rem;
+    border: 1px solid white;
+    margin:0 0 2rem;
+    font-size: 24px;
+}
+#status.good {
+    border-color: green;
+    color: green;
+}
+#status.bad {
+    border-color: red;
+    color: red;
+}
+
+#list li.danger time, #list li.danger .distance {
+    color: red;
+}
