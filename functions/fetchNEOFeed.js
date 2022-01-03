@@ -81,7 +81,6 @@ exports = async function () {
     }))
 
     await neoCollection.bulkWrite(ops, { ordered: false });
-   
   } catch (error) {
     console.error("Failed to insert data", error)
   }
