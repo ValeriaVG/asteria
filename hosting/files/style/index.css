@@ -20,6 +20,8 @@ body{
 main {
     max-width: 540px;
     width:100%;
+    padding:1rem;
+    box-sizing:border-box;
 }
 footer, header{
     margin-top:auto;
